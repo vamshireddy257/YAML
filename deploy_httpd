@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  connection: ssh
+
+
+  tasks:
+    - name: install wen=bserver
+      action: yum name=httpd state=present
+
+    - name: start httpd
+      service: name=httpd state=restarted
