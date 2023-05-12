@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  connection: ssh
+
+  vars: 
+   abc: git, tree
+
+  tasks:
+    - name: installll gittttttttttt
+      action: yum name='{{abc}}' state=present
