@@ -1,0 +1,15 @@
+[root@ip-172-31-30-254 u01]# cat ins_apache.yml 
+---
+- set_fact: abc=httpd
+- name: install httpd
+  yum: name=httpd state=present
+[root@ip-172-31-30-254 u01]# cat start_apache.yml 
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - include: ins_apache.yml
+    - name: restsrt httpd...
+      service: name='{{abc}}' state=restarted
+[root@ip-172-31-30-254 u01]# ansible-playbook start_apache.yml
